@@ -1,4 +1,5 @@
 llm-api/app/.env
+Llm-api/app/lambda-policy.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
