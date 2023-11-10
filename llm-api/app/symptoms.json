@@ -1,0 +1,266 @@
+[
+  {
+    "name": "Apathy",
+    "description": "A lack of interest, enthusiasm, or concern about things that others find moving or exciting."
+  },
+  {
+    "name": "Avoidance of Reminders",
+    "description": "Deliberately staying away from places, people, or activities that remind a person of a traumatic or distressing event."
+  },
+  {
+    "name": "Avoidance of Social Interactions",
+    "description": "Choosing not to engage in social activities and preferring to be alone."
+  },
+  {
+    "name": "Changes in Appetite",
+    "description": "Significant fluctuations in eating habits, either eating too much or too little."
+  },
+  {
+    "name": "Chest Pain",
+    "description": "Experiencing discomfort or pain in the chest area, which can be psychosomatic in nature."
+  },
+  {
+    "name": "Chronic Feelings of Emptiness",
+    "description": "Persistent sense of feeling empty, hollow, or void."
+  },
+  {
+    "name": "Compulsive Behaviors",
+    "description": "Performing certain actions repetitively and compulsively, often as a way of relieving anxiety."
+  },
+  {
+    "name": "Delusions",
+    "description": "Holding strong beliefs that are clearly false or irrational, but believed to be true."
+  },
+  {
+    "name": "Depressive Episodes",
+    "description": "Periods marked by feelings of extreme sadness, hopelessness, and a lack of interest or pleasure in activities."
+  },
+  {
+    "name": "Difficulty Completing Tasks",
+    "description": "Struggling to finish tasks or projects, often due to lack of focus or motivation."
+  },
+  {
+    "name": "Difficulty Concentrating",
+    "description": "Trouble focusing on tasks or maintaining attention."
+  },
+  {
+    "name": "Difficulty Controlling Anger",
+    "description": "Experiencing frequent, intense, or uncontrollable anger."
+  },
+  {
+    "name": "Disorganized Thinking",
+    "description": "Having trouble organizing thoughts, leading to disjointed or incoherent speech."
+  },
+  {
+    "name": "Dizziness",
+    "description": "Experiencing a sense of unsteadiness or lightheadedness."
+  },
+  {
+    "name": "Excessive Doubting",
+    "description": "Persistent and overwhelming doubt about one\u2019s decisions or actions."
+  },
+  {
+    "name": "Excessive Talking",
+    "description": "Talking more than usual or feeling a need to keep talking."
+  },
+  {
+    "name": "Excessive Worry",
+    "description": "An extreme level of worry about various things, beyond what is considered normal."
+  },
+  {
+    "name": "Fatigue",
+    "description": "Persistent feelings of tiredness or lack of energy not related to recent physical exertion."
+  },
+  {
+    "name": "Fear of Abandonment",
+    "description": "An intense and persistent fear of being left alone or abandoned."
+  },
+  {
+    "name": "Fear of Being Judged",
+    "description": "A deep and persistent fear of being evaluated or criticized by others."
+  },
+  {
+    "name": "Fear of Contamination",
+    "description": "A strong fear of getting contaminated by germs, dirt, or other substances."
+  },
+  {
+    "name": "Fear of Losing Control",
+    "description": "Fear of losing control of oneself or one\u2019s behavior."
+  },
+  {
+    "name": "Fear of Social Situations",
+    "description": "Extreme anxiety or discomfort in social settings or when interacting with others."
+  },
+  {
+    "name": "Feelings of Choking",
+    "description": "Sensation of choking or inability to breathe properly, often occurring in anxiety or panic attacks."
+  },
+  {
+    "name": "Feelings of Emptiness",
+    "description": "Persistent feelings of emptiness or numbness."
+  },
+  {
+    "name": "Feelings of Worthlessness",
+    "description": "Persistent beliefs about one's own inadequacy or lack of worth."
+  },
+  {
+    "name": "Flashbacks",
+    "description": "Vivid, distressing recollections of a traumatic event that feel as if they are happening in the present."
+  },
+  {
+    "name": "Forgetfulness",
+    "description": "Difficulty remembering information or events that one would normally recall easily."
+  },
+  {
+    "name": "Grandiosity",
+    "description": "An exaggerated sense of one's importance, power, knowledge, or identity."
+  },
+  {
+    "name": "Hallucinations",
+    "description": "Experiencing sensory perceptions (like seeing, hearing, or feeling things) that aren\u2019t present."
+  },
+  {
+    "name": "Heightened Sensitivity to Criticism",
+    "description": "Overly strong reactions to criticism or perceived slights."
+  },
+  {
+    "name": "Hopelessness",
+    "description": "Feeling a deep sense of despair and belief that one\u2019s situation is hopeless."
+  },
+  {
+    "name": "Hyperactivity",
+    "description": "Excessive physical movement and feelings of restlessness."
+  },
+  {
+    "name": "Hyperarousal",
+    "description": "Excessive alertness; constantly on the lookout for potential threats."
+  },
+  {
+    "name": "Impulsivity",
+    "description": "Acting suddenly without thought or planning."
+  },
+  {
+    "name": "Indecisiveness",
+    "description": "Difficulty making decisions, even about simple or everyday choices."
+  },
+  {
+    "name": "Intense Relationships",
+    "description": "Relationships characterized by extreme emotions or instability."
+  },
+  {
+    "name": "Interrupting or Intruding on Others",
+    "description": "Frequently interrupting or intruding on others\u2019 conversations or activities."
+  },
+  {
+    "name": "Intrusive Memories",
+    "description": "Unwanted, involuntary, and distressing memories of past events."
+  },
+  {
+    "name": "Irritability",
+    "description": "Frequently feeling agitated, annoyed, or easily provoked."
+  },
+  {
+    "name": "Lack of Concentration",
+    "description": "Difficulty in focusing attention or maintaining focus on tasks or activities."
+  },
+  {
+    "name": "Loss of Interest in Activities",
+    "description": "No longer finding pleasure in activities or hobbies that were once enjoyed."
+  },
+  {
+    "name": "Low Self-Esteem",
+    "description": "A persistently negative view of oneself."
+  },
+  {
+    "name": "Manic Episodes",
+    "description": "Periods of extremely elevated mood, energy, and unusual activity levels."
+  },
+  {
+    "name": "Mood Swings",
+    "description": "Rapid and intense changes in mood."
+  },
+  {
+    "name": "Muscle Tension",
+    "description": "Physical tension in muscles, often related to stress or anxiety."
+  },
+  {
+    "name": "Nausea or Abdominal Distress",
+    "description": "Experiencing stomach discomfort, often linked to anxiety or stress."
+  },
+  {
+    "name": "Need for Order and Symmetry",
+    "description": "An overwhelming need for things to be in perfect order or symmetry."
+  },
+  {
+    "name": "Negative Symptoms like Diminished Emotional Expression",
+    "description": "Symptoms marked by a reduction in emotional expression or motivation."
+  },
+  {
+    "name": "Nightmares",
+    "description": "Disturbing dreams that cause distress or anxiety."
+  },
+  {
+    "name": "Obsessive Thoughts",
+    "description": "Persistent, unwanted thoughts that are intrusive and often distressing."
+  },
+  {
+    "name": "Panic Attacks",
+    "description": "Sudden, intense episodes of fear or anxiety accompanied by physical symptoms."
+  },
+  {
+    "name": "Persistent Sadness",
+    "description": "A long-lasting, profound sense of sadness."
+  },
+  {
+    "name": "Physical Symptoms like Sweating and Trembling in Social Settings",
+    "description": "Physical reactions, such as sweating or shaking, occurring in social situations due to anxiety."
+  },
+  {
+    "name": "Rapid Speech",
+    "description": "Speaking at an unusually fast pace, often a sign of manic behavior."
+  },
+  {
+    "name": "Recurrent Thoughts of Death",
+    "description": "Frequent thoughts about death or dying."
+  },
+  {
+    "name": "Reduced Need for Sleep",
+    "description": "Experiencing a decreased need for sleep without feeling tired."
+  },
+  {
+    "name": "Restlessness",
+    "description": "Feeling uneasy or unable to stay still."
+  },
+  {
+    "name": "Risky Behaviors",
+    "description": "Engaging in dangerous or harmful activities without considering the consequences."
+  },
+  {
+    "name": "Self-Harm",
+    "description": "Deliberately hurting oneself as a way of coping with emotional pain."
+  },
+  {
+    "name": "Shortness of Breath",
+    "description": "Experiencing difficulty breathing, often during anxiety or panic attacks."
+  },
+  {
+    "name": "Sleep Disturbances",
+    "description": "Problems with sleeping, such as insomnia or sleeping too much."
+  },
+  {
+    "name": "Social Withdrawal",
+    "description": "Pulling away from social interaction and preferring to be alone."
+  },
+  {
+    "name": "Suicidal Thoughts",
+    "description": "Thoughts about taking one's own life."
+  },
+  {
+    "name": "Sweating",
+    "description": "Excessive sweating, not related to physical exertion or high temperatures."
+  },
+  {
+    "name": "Unusual Motor Behavior",
+    "description": "Engaging in strange or unusual physical movements or behaviors."
+  }
+]
