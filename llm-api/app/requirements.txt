@@ -4,3 +4,4 @@ pydantic
 tiktoken
 boto3
 s3fs
+python-dotenv

@@ -1,28 +1,32 @@
-from openai import OpenAI
+import openai
+import json
 from typing import List
 from pydantic import BaseModel, Field
 
-from dotenv import load_dotenv
-load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+def format_symptom_string(symptoms):
+    res = ""
+    for s in symptoms:
+        res += f"{s['name']}: {s['description']}\n"
+    return res
 
 
-def format_system_message(disorder_descriptions, api_name):
-    if api_name == "disorder":
+def format_system_message(symptoms, api_name):
+    if api_name == "symptoms":
+        symptom_string = format_symptom_string(symptoms)
         return f""" ## ROLE:You are an assistant to a therapist. 
 ## TASK: Your task is to read through passages from a patient's therapy journal.
-Below, you are provided with a list of disorders and their symptom descriptions. Please match the passage with
-a disorder with matching symptoms. 
+Below, you are provided with a list of mental disorder symptoms and their descriptions. Please match the passage with
+matching symptoms. 
 ## RESPONSE: Your response should contain:
-    - list of disorder labels if there is a match. If there is no match, return an empty list.
-    - list of exerpts from the passage that makes you think there is a match between the passage and the disorder. If there is no match, return an empty list.
+    - list of symptoms if there are matches. If there is no match, return an empty list.
+    - list of exerpts from the passage that makes you think there is a match between the passage and symptoms. If there is no match, return an empty list.
     - list of reasonings for why you think there is a match. If there is no match, return an empty list.
-## DISORDER DESCRIPTIONS:
-{disorder_descriptions}
+## SYMPTOMS AND THEIR DESCRIPTIONS:
+{symptom_string}
 """
     elif api_name == "user_feedback":
-        return f""" ## ROLE:You are an assistant to a therapist. 
+        return """ ## ROLE:You are an assistant to a therapist. 
 ## TASK: Your task is to read through passages from a patient's therapy journal.
 If there are especially insightful parts in the user passage, please provide feedback.
 ## EXAMPLE FEEDBACK:
@@ -30,12 +34,6 @@ If there are especially insightful parts in the user passage, please provide fee
     - In this part, would you want to elaborate a bit on ...
     - When this happened, how did you feel? 
     - Don't be too harsh on yourself, you're doing really well!
-## RESPONSE: Your response should contain:
-    - list of disorder labels if there is a match. If there is no match, return an empty list.
-    - list of exerpts from the passage that makes you think there is a match between the passage and the disorder. If there is no match, return an empty list.
-    - list of reasonings for why you think there is a match. If there is no match, return an empty list.
-## DISORDER DESCRIPTIONS:
-{disorder_descriptions}
 """
 
 
@@ -46,20 +44,24 @@ def format_user_message(passage):
 
 def get_openai_function_api(api_name):
     schema = None
-    if api_name == "disorder":
-        class QueryModel(BaseModel):
-            "Output Schema for matching journal passages to disorders."
+    if api_name == "symptoms":
+        class SymptomModel(BaseModel):
+            "Output Schema for excerpts"
 
-            name = "Function name"
-            label: List[str] = Field(..., description="list of disorder labels if there is a match. If there is no match, return an empty list.")
-            excerpt: List[str] = Field(..., description="list of exerpts from the passage that makes you think there is a match between the passage and the disorder. If there is no match, return an empty list.")
-            reason: List[str] = Field(..., description="list of reasonings for why you think there is a match. If there is no match, return an empty list.")
+            symptom: str = Field(..., description="Name of the symptom expressed in the journal entry")
+            excerpts: List[str] = Field(..., description="List of excerpts from the journal entry that you associate with a given symptom")
+            reason: str = Field(..., description="Reason for why the symptom can be concluded from the excerpts")
+
+        class QueryModel(BaseModel):
+            "Output Schema for matching journal excerpts to symptoms."
+
+            symptoms: List[SymptomModel]
 
         output_schema = QueryModel.schema()
         output_api = {
-            "name": OUTPUT_SCHEMA["title"],
-            "description": OUTPUT_SCHEMA["description"],
-            "parameters": OUTPUT_SCHEMA
+            "name": output_schema["title"],
+            "description": output_schema["description"],
+            "parameters": output_schema
         }
         schema = {
             'model': QueryModel,
@@ -70,16 +72,15 @@ def get_openai_function_api(api_name):
         class QueryModel(BaseModel):
             "Output Schema for writing feedback for user passages"
 
-            name = "Function name"
             label: List[str] = Field(..., description="list of feedback labels for the user passages.")
             excerpt: List[str] = Field(..., description="list of exerpts from the passage that you are providing feedback on.")
             feedback: List[str] = Field(..., description="list of feedbacks you want to give the user.")
 
         output_schema = QueryModel.schema()
         output_api = {
-            "name": OUTPUT_SCHEMA["title"],
-            "description": OUTPUT_SCHEMA["description"],
-            "parameters": OUTPUT_SCHEMA
+            "name": output_schema["title"],
+            "description": output_schema["description"],
+            "parameters": output_schema
         }
         schema = {
             'model': QueryModel,
@@ -99,5 +100,5 @@ def call_openai(user_message, system_message, schema, model="gpt-3.5-turbo-1106"
         ]
     ).choices[0].message
     print(completion)
-    result = json.loads(message["function_call"]["arguments"])
+    result = json.loads(completion["function_call"]["arguments"])
     return schema['model'].parse_json(result)
