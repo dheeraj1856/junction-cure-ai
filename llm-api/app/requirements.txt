@@ -3,5 +3,7 @@ openai
 pydantic
 tiktoken
 boto3
+yaml
 s3fs
 python-dotenv
+pyYAML

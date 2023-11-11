@@ -8,6 +8,8 @@
 # usage:
 # build_and_push.sh
 
+
+
 org="labradoodle-ai"
 app_name="llm-api"
 image=${org}-${app_name}
@@ -16,6 +18,20 @@ image=${org}-${app_name}
 LAMBDA_FUNCTION_NAME=${image}
 POLICY_NAME=${image}-policy
 POLICY_FILE="lambda-policy.json"
+
+
+parse_env_to_json() {
+  echo '{'
+  while IFS= read -r line || [ -n "$line" ]; do
+    if [[ $line != \#* && $line == *'='* ]]; then
+      key=$(echo $line | cut -f1 -d'=')
+      value=$(echo $line | cut -f2 -d'=')
+      echo "  \"$key\": \"$value\","
+    fi
+  done < .env
+  echo '}'
+}
+ENV_VARIABLES_JSON=$(parse_env_to_json | sed '$ s/,$//')
 
 if [ "$image" == "" ]
 then
@@ -72,6 +88,7 @@ aws lambda get-function --function-name ${image} > /dev/null 2>&1
 if [ $? -eq 0 ]; then
   # If exists, update
   aws lambda update-function-code --function-name ${LAMBDA_FUNCTION_NAME} --image-uri ${fullname}
+  aws lambda update-function-configuration --function-name ${LAMBDA_FUNCTION_NAME} --environment "Variables=$ENV_VARIABLES_JSON"
 else
   # If not, create function
   aws lambda create-function \
@@ -81,6 +98,7 @@ else
       --role arn:aws:iam::${account}:role/junction-2023-llm-api \
       --timeout 900 \
       --memory-size 512 \
+      --environment "Variables=$ENV_VARIABLES_JSON"
 
   aws lambda add-permission \
       --function-name ${image} \
@@ -138,11 +156,3 @@ else
       --function-name ${image} \
       --auth-type NONE
 fi
-
-# Update function_url to app scripts
-# not needed anymore, as the lambda function urls are fixed
-#function_url=$(aws lambda get-function-url-config --function-name ${image} --query FunctionUrl --output text)
-#echo "function_url = ${function_url}"
-#python3 ../scripts/update-apps-script.py --app-name "${app_name}" --endpoint "${function_url}"
-#cd ../apps-script/apps-script-code
-#sh ./push_apps_script.sh
